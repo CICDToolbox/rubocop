@@ -1,0 +1,44 @@
+matrix:
+  include:
+  - language: ruby
+    name: Build Test on Ruby 2.6 (rvm 2.6)
+    rvm: 2.6
+    script:
+    - "./pipeline.sh"
+  - language: ruby
+    name: Build Test on Ruby 2.7 (rvm 2.7)
+    rvm: 2.7
+    script:
+    - "./pipeline.sh"
+  - language: ruby
+    name: Build Test on Ruby 3.0 (rvm 3.0)
+    rvm: 3.0
+    script:
+    - "./pipeline.sh"
+  - language: ruby
+    name: YAML Linting (rvm 3.0)
+    rvm: 3.0
+    script:
+    - wget --quiet -O - https://raw.githubusercontent.com/CICDToolbox/yaml-lint/master/pipeline.sh
+      | bash
+  - language: bash
+    name: Shellcheck (Bash)
+    os: linux
+    arch: arm64-graviton2
+    script:
+    - wget --quiet -O - https://raw.githubusercontent.com/CICDToolbox/shellcheck/master/pipeline.sh
+      | bash
+  - language: ruby
+    name: Link Checking (rvm 3.0)
+    rvm: 3.0
+    env:
+    - FLAGS="default"
+    - EXCLUDE_FILES="CHANGELOG.md"
+    - WHITELIST="https://img.shields.io"
+    script:
+    - wget --quiet -O - https://raw.githubusercontent.com/CICDToolbox/awesomebot/master/pipeline.sh
+      | bash
+notifications:
+  email: false
+  slack:
+    secure: PnSjoLzcCDnono0ZC5oz71nw/Lha1tEuNkiTzYeyzajhuV+HTD9BR4SkKFdHyAh3dD8lAZP0FUvVGDWb2g2Iqz2tp9UN6ZuysoRUJJkokxWDRCSd9+AwBzwWb1Oaqbwuyel4cvAmIP67jB74hbmeB4nQOeAuZ2/MR4qiCcluoeuvPez8bVwScPU3s2ANmxw6k7rZZxmOTXKOPldw23FWs5xXkscuGi924EjcPj1eYvKhWFRTctjxu8ibmbCl6AqOquOBBZBa7OUXpI+1ZIQHXuApv1Yz1qkLaKBnFCQ9XAJMbzL0+TCzhn2naDnaKSD4uDOUiFStnvS3JWL4x1mDKOgF/volhOr/fQTPDCksoFzoS6RSaka/l8BPntUnAlHxvpcTucztMmEml9tw7umnVpO2fm5yi7VK6ECrdwG17Y77aNTTJ1W0mgx7hbZLtx1uJsYikxvbddn3MkzXlsb+yG5w1zQOOTokNW/z9Jhj5PH1D+UE/xOH3RSP5e1gcHlFPkhVSeNHO4dqnhPuVbr317f5h49N9tGlxhbdOetZhZb47Ryh//Ew1ugRiCTwAKbdT/6mht6xYILZ6jXA0yZLy12xAC+AG9sBJklzks/oJp5xAamRRY8zNxKQOICGh1fRpqeOkfDSvIHJH4qPVA0+OewYUY26EwkrieJokUCpGEo=
