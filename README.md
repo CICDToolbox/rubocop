@@ -1,40 +1,33 @@
-<h1 align="center">
-    <a href="https://github.com/WolfSoftware">
-        <img src="https://raw.githubusercontent.com/WolfSoftware/branding/master/images/general/banners/64/black-and-white.png" alt="Wolf Software Logo" />
-    </a>
-    <br>
-    Rubocop
-</h1>
-
 <p align="center">
+    <a href="https://github.com/CICDToolbox">
+        <img src="https://cdn.wolfsoftware.com/assets/images/github/organisations/cicdtoolbox/black-and-white-circle-256.png" alt="CICDToolbox Logo" />
+    </a>
+    <br />
     <a href="https://github.com/CICDToolbox/rubocop/actions/workflows/pipeline.yml">
-        <img src="https://img.shields.io/github/workflow/status/CICDToolbox/rubocop/pipeline/master?logo=github&logoColor=white&style=for-the-badge" alt="Github Build Status">
-    </a>
-    <a href="https://travis-ci.com/CICDToolbox/rubocop">
-        <img src="https://img.shields.io/travis/com/CICDToolbox/rubocop/master?style=for-the-badge&logo=travis" alt="Travis Build Status">
+        <img src="https://img.shields.io/github/workflow/status/CICDToolbox/rubocop/pipeline/master?style=for-the-badge" alt="Github Build Status">
     </a>
     <a href="https://github.com/CICDToolbox/rubocop/releases/latest">
-        <img src="https://img.shields.io/github/v/release/CICDToolbox/rubocop?color=blue&style=for-the-badge&logo=github&logoColor=white&label=Latest%20Release" alt="Release">
+        <img src="https://img.shields.io/github/v/release/CICDToolbox/rubocop?color=blue&label=Latest%20Release&style=for-the-badge" alt="Release">
     </a>
     <a href="https://github.com/CICDToolbox/rubocop/releases/latest">
-        <img src="https://img.shields.io/github/commits-since/CICDToolbox/rubocop/latest.svg?color=blue&style=for-the-badge&logo=github&logoColor=white" alt="Commits since release">
+        <img src="https://img.shields.io/github/commits-since/CICDToolbox/rubocop/latest.svg?color=blue&style=for-the-badge" alt="Commits since release">
     </a>
-    <br>
+    <br />
     <a href=".github/CODE_OF_CONDUCT.md">
-        <img src="https://img.shields.io/badge/Code%20of%20Conduct-blue?style=for-the-badge&logo=read-the-docs&logoColor=white" />
+        <img src="https://img.shields.io/badge/Code%20of%20Conduct-blue?style=for-the-badge" />
     </a>
     <a href=".github/CONTRIBUTING.md">
-        <img src="https://img.shields.io/badge/Contributing-blue?style=for-the-badge&logo=read-the-docs&logoColor=white" />
+        <img src="https://img.shields.io/badge/Contributing-blue?style=for-the-badge" />
     </a>
     <a href=".github/SECURITY.md">
-        <img src="https://img.shields.io/badge/Report%20Security%20Concern-blue?style=for-the-badge&logo=read-the-docs&logoColor=white" />
+        <img src="https://img.shields.io/badge/Report%20Security%20Concern-blue?style=for-the-badge" />
     </a>
     <a href="https://github.com/CICDToolbox/rubocop/issues">
-        <img src="https://img.shields.io/badge/Get%20Support-blue?style=for-the-badge&logo=read-the-docs&logoColor=white" />
+        <img src="https://img.shields.io/badge/Get%20Support-blue?style=for-the-badge" />
     </a>
-    <br>
-    <a href="https://github.com/TGWolf">
-        <img src="https://img.shields.io/badge/Created%20by%20Wolf-black?style=for-the-badge" />
+    <br />
+    <a href="https://wolfsoftware.com">
+        <img src="https://img.shields.io/badge/Created%20by%20Wolf%20Software-blue?style=for-the-badge" />
     </a>
 </p>
 
@@ -42,9 +35,9 @@
 
 A tool to perform static code analysis on Ruby code in CI/CD pipelines using [rubocop](https://rubygems.org/gems/rubocop).
 
-## Usage
+This tool has been written and tested using GitHub Actions but it should work out of the box with a lot of other CI/CD tools.
 
-### GitHub Actions
+## Usage
 
 ```yml
 on: [push, pull_request]
@@ -57,32 +50,51 @@ jobs:
       with:
         ruby-version: 3.0
     - name: Run Rubocop
-      run: wget --quiet -O - https://raw.githubusercontent.com/CICDToolbox/rubocop/master/pipeline.sh | bash
+      run: bash <(curl -s https://raw.githubusercontent.com/CICDToolbox/rubocop/master/pipeline.sh)
 ```
 
-### Travis CI
+### Other Options
+
+The following environment variables can be set in order to customise the script.
+
+| Name          | Purpose | Default Value |
+| ------------- | ------- | ------------- |
+| EXCLUDE_FILES | A comma separated list of files to exclude from being scanned. | Unset |
+| REPORT_ONLY   | Generate the report but do not fail the build even if an error occurred. | False | 
+| SHOW_ERRORS   | Show the actual errors instead of just which files had errors. | False | 
+
+You can use any combination of the above settings.
 
 ```yml
-language: ruby
-rvm: 3.0
-
-script:
-  - wget --quiet -O - https://raw.githubusercontent.com/CICDToolbox/rubocop/master/pipeline.sh | bash
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    - name: Set up Ruby 3.0
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.0
+    - name: Run Awesomebot
+      env:
+        REPORT_ONLY: true
+        SHOW_ERRORS: true
+      run: bash <(curl -s https://raw.githubusercontent.com/CICDToolbox/rubocop/master/pipeline.sh)
 ```
 
 ### Example Output
 
 This is an example of the output report generated by this tool, this is the actual output from the tool running against itself.
 ```
---------------------------------------------------------------------------------
-             Scanning all ruby files with rubocop (version: 1.17.0)
---------------------------------------------------------------------------------
- [  OK  ] Processing successful for tests/no-extension-test
- [  OK  ] Processing successful for tests/non-interpreter-test.rb
- [  OK  ] Processing successful for tests/test.rb
---------------------------------------------------------------------------------
-                     Total: 3, OK: 3, Failed: 0, Skipped: 0
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------- Stage 1 - Parameters --
+ No parameters given
+--------------------------------------------------------------- Stage 2 - Install Prerequisites --
+ [  OK  ] rubocop is alredy installed
+--------------------------------------------------------------- Stage 3 - Run rubocop (v1.22.1) --
+ [  OK  ] tests/no-extension-test
+ [  OK  ] tests/non-interpreter-test.rb
+ [  OK  ] tests/test.rb
+------------------------------------------------------------------------------ Stage 4 - Report --
+ Total: 3, OK: 3, Failed: 0, Skipped: 0
+---------------------------------------------------------------------------- Stage 5 - Complete --
 ```
 
 ### File Identification
@@ -96,12 +108,3 @@ AND
 
 [[ ${filename} =~ \.rb$ ]]
 ```
-
-
-## Show Support
-
-<p>
-	<a href="https://ko-fi.com/wolfsoftware">
-		<img src="https://img.shields.io/badge/Ko%20Fi-blue?style=for-the-badge&logo=ko-fi&logoColor=white" />
-	</a>
-</p>
