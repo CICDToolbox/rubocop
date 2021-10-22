@@ -7,7 +7,9 @@ This changelog was automatically generated using [Caretaker](https://github.com/
 
 ### [Unreleased](https://github.com/CICDToolbox/rubocop/compare/v0.1.0...HEAD)
 
-- New logo [`[head]`](https://github.com/CICDToolbox/rubocop/commit/)
+- update readme [`[head]`](https://github.com/CICDToolbox/rubocop/commit/)
+
+- New logo [`[c2804fa]`](https://github.com/CICDToolbox/rubocop/commit/c2804faff31119a57e2b3deb9a7b523313b018e2)
 
 - update [`[fc8423d]`](https://github.com/CICDToolbox/rubocop/commit/fc8423d17469a244b3969f96ea9e035c9020d2d1)
 
