@@ -9,6 +9,8 @@ This changelog was automatically generated using [Caretaker](https://github.com/
 
 - Fix find command [`[head]`](https://github.com/CICDToolbox/rubocop/commit/)
 
+- Fix find command [`[0eb9f42]`](https://github.com/CICDToolbox/rubocop/commit/0eb9f42eef360f51e601e2f5f5ae42bbe342eece)
+
 - Fix find command [`[726c346]`](https://github.com/CICDToolbox/rubocop/commit/726c3463c4253564ef9b379d13c020dbaf4d2ed4)
 
 - shellcheck [`[ae5a5e4]`](https://github.com/CICDToolbox/rubocop/commit/ae5a5e4bafd9e895c650e4867f0006534b2a4775)
