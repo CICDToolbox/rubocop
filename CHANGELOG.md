@@ -7,7 +7,9 @@ This changelog was automatically generated using [Caretaker](https://github.com/
 
 ### [Unreleased](https://github.com/CICDToolbox/rubocop/compare/v0.1.0...HEAD)
 
-- shellcheck [`[head]`](https://github.com/CICDToolbox/rubocop/commit/)
+- Fix find command [`[head]`](https://github.com/CICDToolbox/rubocop/commit/)
+
+- shellcheck [`[ae5a5e4]`](https://github.com/CICDToolbox/rubocop/commit/ae5a5e4bafd9e895c650e4867f0006534b2a4775)
 
 - update readme [`[2c87c7b]`](https://github.com/CICDToolbox/rubocop/commit/2c87c7b33a1a99af8f2851955a694c3d9691ade4)
 
