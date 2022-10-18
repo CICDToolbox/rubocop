@@ -7,7 +7,9 @@ This changelog was automatically generated using [Caretaker](https://github.com/
 
 ### [Unreleased](https://github.com/CICDToolbox/rubocop/compare/v0.1.0...HEAD)
 
-- Make errors easier to see and default to showing errors [`[head]`](https://github.com/CICDToolbox/rubocop/commit/)
+- Change the logic for skipping and showing skipped files [`[head]`](https://github.com/CICDToolbox/rubocop/commit/)
+
+- Make errors easier to see and default to showing errors [`[af68320]`](https://github.com/CICDToolbox/rubocop/commit/af6832088ee99fbe21a6c605f5d0b467a6b16294)
 
 - Fix find command [`[2debe81]`](https://github.com/CICDToolbox/rubocop/commit/2debe815738fa0cb5bf78c738124ee27bf5762cc)
 
